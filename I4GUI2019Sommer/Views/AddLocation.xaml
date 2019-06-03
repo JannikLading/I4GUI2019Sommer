@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Add New Location" Height="450" Width="400">
     <DockPanel Background="LimeGreen">
+
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="AliceBlue">
+            <StatusBarItem Content="Jannik Haumann Lading AU592556" />
+        </StatusBar>
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>

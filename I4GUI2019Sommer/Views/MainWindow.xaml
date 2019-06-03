@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:I4GUI2019Sommer"
         xmlns:viewmodels="clr-namespace:I4GUI2019Sommer.Viewmodels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Tree App" Height="450" Width="800">
     <Window.DataContext>
         <viewmodels:MainWindowViewModel />
     </Window.DataContext>
@@ -20,13 +20,14 @@
             </Menu>
 
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Background="AliceBlue">
+            <StatusBarItem Content="Jannik Haumann Lading AU592556" />
             <StatusBarItem Name="sbiDateTime" HorizontalAlignment="Right">
-                    <StackPanel Orientation="Horizontal" Name="spClock">
-                        <TextBlock Margin="4,0" Name="tblkDate" Text="{Binding Path=Clock.Date}" />
-                        <TextBlock Margin="4,0" Name="tblkTime" Text="{Binding Path=Clock.Time}" />
-                    </StackPanel>
-                </StatusBarItem>
-            </StatusBar>
+                <StackPanel Orientation="Horizontal" Name="spClock">
+                    <TextBlock Margin="4,0" Name="tblkDate" Text="{Binding Path=Clock.Date}" />
+                    <TextBlock Margin="4,0" Name="tblkTime" Text="{Binding Path=Clock.Time}" />
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
 
 
 
