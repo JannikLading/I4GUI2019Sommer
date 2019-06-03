@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using I4GUI2019SommerWEB.Data;
 using Microsoft.AspNetCore.Mvc;
 using I4GUI2019SommerWEB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace I4GUI2019SommerWEB.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        [Authorize]
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return View(_context.Locations);
         }
 
         public IActionResult Privacy()

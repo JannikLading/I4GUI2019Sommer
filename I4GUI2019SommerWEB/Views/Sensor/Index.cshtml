@@ -1,0 +1,48 @@
+﻿@model IEnumerable<I4GUI2019SommerWEB.Models.Sensor>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SensorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TreeSort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sensor in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => sensor.SensorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => sensor.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => sensor.TreeSort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => sensor.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => sensor.Longitude)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

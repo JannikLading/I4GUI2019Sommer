@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:I4GUI2019Sommer.Views"
         mc:Ignorable="d"
-        Title="AddLocation" Height="450" Width="400">
-    <DockPanel>
+        Title="Add New Location" Height="450" Width="400">
+    <DockPanel Background="LimeGreen">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Rectangle Grid.ColumnSpan="2" Fill="Orange"></Rectangle>-->
-            <!--<Image Grid.ColumnSpan="3" Stretch="UniformToFill" Source="/Images/Honey.png" Margin="-39,0,-64.4,0" />-->
+            <Image Grid.ColumnSpan="3" Stretch="Uniform" Source="/Images/tree.png" />
 
 
             <Label Margin="5,0,0,0" FontSize="16" Grid.ColumnSpan="2">New Location</Label>

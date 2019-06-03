@@ -4,16 +4,14 @@ using I4GUI2019SommerWEB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace I4GUI2019SommerWEB.Data.Migrations
+namespace I4GUI2019SommerWEB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190602210037_intial3")]
-    partial class intial3
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,11 +26,7 @@ namespace I4GUI2019SommerWEB.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("AddressLine1");
-
-                    b.Property<string>("AddressLine2");
-
-                    b.Property<string>("City");
+                    b.Property<string>("Company");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -43,6 +37,8 @@ namespace I4GUI2019SommerWEB.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("EmployeeNumber");
 
                     b.Property<string>("FirstName");
 
@@ -73,8 +69,6 @@ namespace I4GUI2019SommerWEB.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
-                    b.Property<string>("ZipCode");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -86,6 +80,57 @@ namespace I4GUI2019SommerWEB.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("I4GUI2019SommerWEB.Models.Location", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Street")
+                        .IsRequired();
+
+                    b.Property<string>("Streetnr");
+
+                    b.Property<string>("Trees")
+                        .IsRequired();
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired();
+
+                    b.HasKey("LocationId");
+
+                    b.ToTable("Locations");
+
+                    b.HasData(
+                        new { LocationId = 1, City = "Aarhus", Name = "Mindeparken", Street = "Carl Nielsens Vej", Trees = "Birk: 5 Eg: 10", ZipCode = "8000" },
+                        new { LocationId = 2, City = "Aarhus N", Name = "Finlandsgade", Street = "Finlandsgade", Trees = "Bøg: 9 Gran: 5", ZipCode = "8200" }
+                    );
+                });
+
+            modelBuilder.Entity("I4GUI2019SommerWEB.Models.Sensor", b =>
+                {
+                    b.Property<int>("SensorId");
+
+                    b.Property<double>("Latitude");
+
+                    b.Property<int>("LocationId");
+
+                    b.Property<double>("Longitude");
+
+                    b.Property<string>("TreeSort")
+                        .IsRequired();
+
+                    b.HasKey("SensorId");
+
+                    b.ToTable("Sensors");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

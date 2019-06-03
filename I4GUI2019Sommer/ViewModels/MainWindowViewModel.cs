@@ -187,7 +187,6 @@ namespace I4GUI2019Sommer.Viewmodels
                     }
                 });
                 FilteredLocations = new ObservableCollection<Location>(tempLocations);
-
             }
             else
             {

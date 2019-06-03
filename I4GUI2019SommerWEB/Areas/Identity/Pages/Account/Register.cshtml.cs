@@ -49,20 +49,13 @@ namespace I4GUI2019SommerWEB.Areas.Identity.Pages.Account
             public string LastName { get; set; }
 
             [Required]
-            [Display(Name = "Street Address")]
-            public string AddressLine1 { get; set; }
+            [Display(Name = "Company")]
+            public string Company { get; set; }
 
-            [Display(Name = "Alternativ Address")]
-            public string AddressLine2 { get; set; }
-
-            [Required]
-            [Display(Name = "ZipCode")]
-            public string ZipCode { get; set; }
-
-            [Required]
-            [Display(Name = "City")]
-            public string City { get; set; }
-
+            [Display(Name = "EmployeeNumber")]
+            [RegularExpression("[0-9]{6}")]
+            public string EmployeeNumber { get; set; }
+            
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -92,14 +85,12 @@ namespace I4GUI2019SommerWEB.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser
                 {
-                    UserName = Input.FirstName,
+                    UserName = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    AddressLine1 = Input.AddressLine1,
-                    AddressLine2 = Input.AddressLine2,
-                    City = Input.City,
-                    ZipCode = Input.ZipCode,
-                    Email = Input.Email,
+                    EmployeeNumber = Input.EmployeeNumber,
+                    Company = Input.Company,
+                    Email = Input.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
