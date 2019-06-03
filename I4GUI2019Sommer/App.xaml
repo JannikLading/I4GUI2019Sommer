@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:I4GUI2019Sommer"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <!--Label style-->
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
     </Application.Resources>
 </Application>

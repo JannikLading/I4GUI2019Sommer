@@ -8,23 +8,23 @@ namespace I4GUI2019Sommer.Data
 {
     public class Repository
     {
-        internal static void ReadFile(string fileName, out ObservableCollection<Location> VarroaCounts)
+        internal static void ReadFile(string fileName, out ObservableCollection<Location> locations)
         {
             // Create an instance of the XmlSerializer class and specify the type of object to deserialize.
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Location>));
             TextReader reader = new StreamReader(fileName);
             // Deserialize all the agents.
-            VarroaCounts = (ObservableCollection<Location>)serializer.Deserialize(reader);
+            locations = (ObservableCollection<Location>)serializer.Deserialize(reader);
             reader.Close();
         }
 
-        internal static void SaveFile(string fileName, ObservableCollection<Location> varroaCounts)
+        internal static void SaveFile(string fileName, ObservableCollection<Location> locations)
         {
             // Create an instance of the XmlSerializer class and specify the type of object to serialize.
             XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Location>));
             TextWriter writer = new StreamWriter(fileName);
             // Serialize all the agents.
-            serializer.Serialize(writer, varroaCounts);
+            serializer.Serialize(writer, locations);
             writer.Close();
         }
     }

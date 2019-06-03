@@ -29,12 +29,12 @@ namespace I4GUI2019Sommer.Models
         {
             _locationId = _nrOfInstances;
             _nrOfInstances++; 
+            _trees = new ObservableCollection<Tree>();
         }
 
         public int LocationId
         {
             get { return _locationId; }
-            private set { SetProperty(ref _locationId, value); }
         }
 
         public string Name

@@ -85,19 +85,61 @@
                          MinWidth="100"
                          Text="{Binding Path=NewLocation.City}" 
                 />
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <TextBox  Width="70"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="TypeTextbox" Margin="0,5,0,0" Padding="4"
+                                  Text="{Binding Path=TreeType}"
+                            />
+                        <TextBlock IsHitTestVisible="False" Text="Type" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Padding="0,4,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=TypeTextbox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                         <TextBox  Width="70"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="CountTextbox" Margin="80,5,0,0" Padding="4"
+                                   Text="{Binding Path=TreeCount}"/>
+                            <TextBlock IsHitTestVisible="False" Text="Count" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="85,0,0,0" Padding="0,4,0,0" Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=CountTextbox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                    </Grid>
+                    <Button Margin="10,0,0,0" 
+                            Height="26" 
+                            VerticalAlignment="Bottom"
+                            Command="{Binding Path=AddTreeCommand}"
+                    >
+                        Add tree
+                    </Button>
+                </StackPanel>
+
+                <DataGrid Margin="0,5,5,0" 
+                          Padding="4"
+                          Name="TextboxNotes" 
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False" 
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Path=NewLocation.Trees}"/>
+
             </StackPanel>
 
-            <!--<TextBox Grid.Column="1" Margin="0,145,5,5"
-                         Padding="4"
-                         Name="TextboxNotes" 
-                         Text="{Binding Path=NewVarroaCount.Notes}" 
-                         AcceptsReturn="True"
-                         TextWrapping="Wrap"
-                         VerticalAlignment="Stretch"
-                         VerticalScrollBarVisibility="Auto"
-                         HorizontalAlignment="Stretch"                
-                />-->
-
+           
         </Grid>
 
 
