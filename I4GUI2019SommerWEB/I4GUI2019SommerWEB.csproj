@@ -15,4 +15,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\tree.png" />
+  </ItemGroup>
+
 </Project>

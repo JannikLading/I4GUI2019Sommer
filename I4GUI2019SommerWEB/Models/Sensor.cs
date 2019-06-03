@@ -14,8 +14,7 @@ namespace I4GUI2019SommerWEB.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         [RegularExpression("[0-9]{6}")]
-        public int SensorId { get;
-            set; }
+        public int SensorId { get; set; }
 
         [Required]
         public int LocationId { get; set; }

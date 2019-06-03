@@ -25,6 +25,17 @@ namespace I4GUI2019SommerWEB.Controllers
             return View(_context.Locations);
         }
 
+        [HttpPost]
+        [Authorize]
+        public IActionResult Filter(string filter)
+        {
+            if (filter != null)
+            {
+                return View("Index", _context.Locations.Where(x => x.Name.Contains(filter)));
+            }
+            return View("Index", _context.Locations);
+        }
+
         public IActionResult Privacy()
         {
             return View();
