@@ -31,12 +31,118 @@
 
 
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.2*"/>
-                    
-                </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<Rectangle Grid.ColumnSpan="2" Fill="Orange"></Rectangle>
+            <Rectangle Grid.Column="2" Fill="DarkOrange"></Rectangle>-->
+
+
+            <Image Grid.ColumnSpan="3" Stretch="UniformToFill" Source="/Images/Honey.png" Margin="-39,0,-64.4,0" />
+
+            <Label Margin="5"  Grid.ColumnSpan="2" FontSize="16">Current Location</Label>
+
+            <StackPanel Margin="0,33,0,0" Grid.Column="0">
+                <Label Margin="5">LocationId</Label>
+                <Label Margin="5">Name</Label>
+                <Label Margin="5">Address</Label>
+                <Label Margin="5">Trees</Label>
+            </StackPanel>
+
+            <StackPanel Margin="0,33,0,0" Grid.Column="1" HorizontalAlignment="Stretch">
+                <TextBox Margin="0,5,5,5"
+                         Padding="4"
+                         Name="TxtboxLocation" 
+                         VerticalAlignment="Top" 
+                         HorizontalAlignment="Left" 
+                         MinWidth="100"
+                         IsReadOnly="True"
+                         Text="{Binding Path=CurrentLocation.LocationId, Mode=OneWay}" 
+                         MaxLength="18"
+                />
+                <TextBox Margin="0,5,5,5"
+                         Padding="4"
+                         Name="TxtboxName" 
+                         VerticalAlignment="Top" 
+                         HorizontalAlignment="Left" 
+                         Width="100"
+                         Text="{Binding Path=CurrentLocation.Name}" 
+                         IsReadOnly="True"
+                />
+                <TextBox Margin="0,5,5,5"
+                         Padding="4"
+                         Name="TextboxNumber" 
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Left" 
+                         Width="auto"
+                         TextWrapping="Wrap"
+                         IsReadOnly="True"
+                         >
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="{}{0} {1}, {2}, {3}">
+                            <Binding Path="CurrentLocation.Street" />
+                            <Binding Path="CurrentLocation.Streetnr" />
+                            <Binding Path="CurrentLocation.ZipCode" />
+                            <Binding Path="CurrentLocation.City" />
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
                 
-            </Grid>
+
+            </StackPanel>
+
+            <DataGrid Margin="0,145,5,5" 
+                     Grid.Column="1"
+                     Padding="4"
+                     Name="TextboxNotes" 
+                     VerticalAlignment="Stretch"
+                     HorizontalAlignment="Stretch"
+                     CanUserAddRows="False" 
+                     CanUserDeleteRows="False" 
+                     IsReadOnly="True"
+                     ItemsSource="{Binding Path=CurrentLocation.Trees}"/>
+
+            <StackPanel Grid.Column="2">
+                <Label Margin="5,5,0,0" FontSize="16">Locations List</Label>
+                <DockPanel>
+                    <Label Margin="5,0,0,0">Filter by name:</Label>
+                    <TextBox Name="TextboxNameFilter"
+                             Text="{Binding Path=Filter}"
+                             Width="100"
+                             Padding="4"
+                    >
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding Path =FilterLocationsCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <Button Content="Filter" 
+                            Command="{Binding Path=FilterLocationsCommand}"
+                            ></Button>
+                    <Button Padding="2" Margin="5,0,9,0" Content="Add Location" HorizontalAlignment="Right"
+                            Command="{Binding Path=AddLocationCommand}" />
+
+                </DockPanel>
+
+                <DataGrid ItemsSource="{Binding Path=FilteredLocations}" 
+                          SelectedItem="{Binding Path=CurrentLocation}"
+                          SelectedIndex="{Binding Path=CurrentIndex}"
+                          IsSynchronizedWithCurrentItem="True"
+                          Margin="5"
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False" 
+                          IsReadOnly="True"
+                          MinRowHeight="12"
+                          MaxColumnWidth="150"
+                          Name="dgLocations"
+                >
+                </DataGrid>
+            </StackPanel>
+
+        </Grid>
 
         </DockPanel>
 </Window>
