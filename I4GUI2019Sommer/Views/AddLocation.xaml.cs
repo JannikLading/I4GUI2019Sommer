@@ -23,5 +23,9 @@ namespace I4GUI2019Sommer.Views
         {
             InitializeComponent();
         }
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

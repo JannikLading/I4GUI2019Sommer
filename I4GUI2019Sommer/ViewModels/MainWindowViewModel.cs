@@ -15,7 +15,8 @@ using Prism.Mvvm;
 using I4GUI2019Sommer.Data;
 using I4GUI2019Sommer.Models;
 using I4GUI2019Sommer.Utilities;
-//using I4GUI2019Sommer.Views;
+using I4GUI2019Sommer.ViewModels;
+using I4GUI2019Sommer.Views;
 
 namespace I4GUI2019Sommer.Viewmodels
 {
@@ -110,8 +111,7 @@ namespace I4GUI2019Sommer.Viewmodels
             private get { return _filter; }
             set { SetProperty(ref _filter, value); }
         }
-
-
+        
         public int CurrentIndex
         {
             get { return _currentIndex; }
@@ -130,9 +130,7 @@ namespace I4GUI2019Sommer.Viewmodels
             get => clock;
             set => clock = value;
         }
-
-
-
+        
         ICommand _addCommand;
         public ICommand AddLocationCommand
         {
@@ -142,22 +140,22 @@ namespace I4GUI2019Sommer.Viewmodels
                 {
                     var newLocation = new Location();
 
-                    //var vm = new AddVarroaCountViewModel(varroaCount);
+                    var vm = new AddLocationViewModel(newLocation);
 
-                    //var view = new AddVarroaCount
-                    //{
-                    //    DataContext = vm
-                    //};
+                    var view = new AddLocation()
+                    {
+                        DataContext = vm
+                    };
 
-                    //if (view.ShowDialog() == true)
-                    //{
-                    //    _locations.Add(newLocation);
-                    //    if (Filter == "" || newLocation.Name == Filter)
-                    //    {
-                    //        FilteredLocations.Add(newLocation);
-                    //    }
-                    //    CurrentLocation = newLocation;
-                    //}
+                    if (view.ShowDialog() == true)
+                    {
+                        _locations.Add(newLocation);
+                        if (Filter == "" || newLocation.Name == Filter)
+                        {
+                            FilteredLocations.Add(newLocation);
+                        }
+                        CurrentLocation = newLocation;
+                    }
 
                 }));
             }

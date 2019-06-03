@@ -84,6 +84,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="ViewModels\AddLocationViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\AddLocation.xaml.cs">
       <DependentUpon>AddLocation.xaml</DependentUpon>

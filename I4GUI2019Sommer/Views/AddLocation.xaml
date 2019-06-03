@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:I4GUI2019Sommer.Views"
         mc:Ignorable="d"
         Title="AddLocation" Height="450" Width="400">
+    <DockPanel>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.2*"/>
@@ -19,16 +20,23 @@
             <Label Margin="5,0,0,0" FontSize="16" Grid.ColumnSpan="2">New Location</Label>
 
             <StackPanel Margin="0,33,0,0" Grid.Column="0">
-                <Label Margin="5">Beehive</Label>
-                <Label Margin="5">Date</Label>
-                <Label Margin="5">Number</Label>
-                <Label Margin="5">Notes</Label>
-                <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <Button Name="OkBtn" Width="50" Margin="0,0,5,0" Content="Ok" Click="OkBtn_Click"></Button>
-                    <Button Name="CancelBtn" Width="50" Content="Cancel" IsCancel="True" ></Button>
-                </StackPanel>
+                <Label Margin="5">Name</Label>
+                <Label Margin="5">Street</Label>
+                <Label Margin="5">StreetNr.</Label>
+                <Label Margin="5">Zip Code</Label>
+                <Label Margin="5">City</Label>
+                <Label Margin="5">Trees</Label>
             </StackPanel>
 
+            <StackPanel Margin="0,10" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom"
+                        Grid.Column="0"
+            >
+                <Button Name="OkBtn" Width="50" Margin="0,0,5,0" Content="Ok" Click="OkBtn_Click"></Button>
+                <Button Name="CancelBtn" Width="50" Content="Cancel" IsCancel="True" ></Button>
+            </StackPanel>
 
             <StackPanel Margin="0,33,0,0" Grid.Column="1" HorizontalAlignment="Stretch">
                 <TextBox Margin="0,5,5,5"
@@ -36,16 +44,19 @@
                          Name="TextboxName" 
                          VerticalAlignment="Top" 
                          HorizontalAlignment="Left" 
-                         MinWidth="130"
-                         Text="{Binding Path=NewVarroaCount.Beehive}" 
+                         MinWidth="100"
+                         Text="{Binding Path=NewLocation.Name}" 
                          MaxLength="18"
                 />
 
-                <DatePicker Padding="4" 
-                        Margin="0,5,5,5" 
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top"
-                        SelectedDate="{Binding Path=Date}"
+                <TextBox Margin="0,5,5,5"
+                     Padding="4"
+                     Name="TextboxStreet" 
+                     VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" 
+                     MinWidth="150"
+                     Text="{Binding Path=NewLocation.Street}" 
+                     MaxLength="18"
                 />
 
                 <TextBox Margin="0,5,5,5"
@@ -54,11 +65,29 @@
                          VerticalAlignment="Top" 
                          HorizontalAlignment="Left" 
                          MinWidth="40"
-                         Text="{Binding Path=NewVarroaCount.Count}" 
+                         Text="{Binding Path=NewLocation.Streetnr}" 
+                />
+
+                <TextBox Margin="0,5,5,5"
+                         Padding="4"
+                         Name="TextboxZipCode" 
+                         VerticalAlignment="Top" 
+                         HorizontalAlignment="Left" 
+                         MinWidth="40"
+                         Text="{Binding Path=NewLocation.ZipCode}" 
+                />
+
+                <TextBox Margin="0,5,5,5"
+                         Padding="4"
+                         Name="TextboxCity" 
+                         VerticalAlignment="Top" 
+                         HorizontalAlignment="Left" 
+                         MinWidth="100"
+                         Text="{Binding Path=NewLocation.City}" 
                 />
             </StackPanel>
 
-            <TextBox Grid.Column="1" Margin="0,145,5,5"
+            <!--<TextBox Grid.Column="1" Margin="0,145,5,5"
                          Padding="4"
                          Name="TextboxNotes" 
                          Text="{Binding Path=NewVarroaCount.Notes}" 
@@ -67,6 +96,11 @@
                          VerticalAlignment="Stretch"
                          VerticalScrollBarVisibility="Auto"
                          HorizontalAlignment="Stretch"                
-                />
+                />-->
+
         </Grid>
+
+
+    </DockPanel>
+
 </Window>
